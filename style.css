@@ -1,0 +1,86 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f5f5f5;
+  color: #1a2a6c;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(90deg, #1a2a6c 60%, #2bc4ad 100%);
+  color: #fff;
+  padding: 2.5rem 0 2rem 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.2em;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.5em;
+}
+
+.cta-btn {
+  display: inline-block;
+  color: #fff;
+  background: #f9a826;
+  padding: 0.75em 1.5em;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(26,42,108,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta-btn:hover {
+  background: #2bc4ad;
+  color: #1a2a6c;
+}
+
+.section {
+  background: #fff;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(26,42,108,0.06);
+  max-width: 900px;
+}
+
+h2 {
+  color: #1a2a6c;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  margin: 1em 0 0 1.5em;
+}
+
+.card {
+  background: #f5f5f5;
+  border-left: 6px solid #2bc4ad;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+a {
+  color: #1a2a6c;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #2bc4ad;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: #1a2a6c;
+  font-weight: bold;
+  background: #f5f5f5;
+  margin-top: 2rem;
+}
