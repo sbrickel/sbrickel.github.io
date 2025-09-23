@@ -7,6 +7,10 @@
   --text-light: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -19,9 +23,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  width: 100%;
   background: var(--primary);
-  color: var(--text-light);
   z-index: 1000;
 }
 
@@ -58,20 +60,30 @@ body {
 
 /* Hero */
 header.hero {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: url('images/banner.png') center/cover no-repeat;
   color: var(--text-light);
   text-align: center;
-  padding: 5rem 1rem 3rem;
+  padding: 6rem 1rem 4rem;
+  position: relative;
+}
+
+header.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 42, 108, 0.6); /* overlay */
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   max-width: 800px;
   margin: auto;
 }
 
 .hero-photo {
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--accent);
@@ -102,46 +114,40 @@ header.hero {
   color: var(--text-dark);
 }
 
-/* Sections */
-section {
-  padding: 3rem 10%;
-}
-
-section h2 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-/* About */
-.about-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.about-photo {
-  max-width: 280px;
-  width: 100%;
-  height: auto;
+/* About Carousel */
+.carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 1rem auto;
+  overflow: hidden;
   border-radius: 8px;
   border: 3px solid var(--secondary);
 }
 
-/* Experience */
-.experience-item {
-  margin-bottom: 1.5rem;
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-.experience-item h3 {
-  margin: 0;
-  color: var(--secondary);
+.carousel img {
+  width: 100%;
+  flex-shrink: 0;
 }
 
-.experience-item span {
-  font-size: 0.9rem;
-  color: var(--primary);
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
 }
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
 /* Skills */
 .skills-grid {
@@ -158,10 +164,19 @@ section h2 {
   font-size: 0.9rem;
 }
 
-/* Certifications */
-.certifications {
-  list-style: square;
-  padding-left: 1.2rem;
+/* Experience */
+.experience-item {
+  margin-bottom: 2rem;
+}
+
+.experience-item h3 {
+  margin: 0;
+  color: var(--secondary);
+}
+
+.experience-item span {
+  font-size: 0.9rem;
+  color: var(--primary);
 }
 
 /* Footer */
@@ -174,6 +189,11 @@ footer {
 
 footer a {
   color: var(--accent);
-  text-decoration: none;
-  margin: 0 0.5rem;
+  font-size: 1.4rem;
+  margin: 0 0.8rem;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--secondary);
 }
