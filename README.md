@@ -1,2 +1,2 @@
-# sbrickel.github.io
+# Dr. Sebastian Brickel
 GitHub page
