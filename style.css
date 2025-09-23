@@ -15,21 +15,67 @@ body {
   line-height: 1.6;
 }
 
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--primary);
+  color: var(--text-light);
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 10%;
+}
+
+.nav-logo {
+  font-weight: bold;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Hero */
 header.hero {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--text-light);
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 5rem 1rem 3rem;
 }
 
-header.hero h1 {
-  margin: 0;
-  font-size: 2.5rem;
+.hero-content {
+  max-width: 800px;
+  margin: auto;
 }
 
-header.hero h2 {
-  margin-top: 0.5rem;
-  font-weight: 400;
+.hero-photo {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  margin-bottom: 1rem;
 }
 
 .hero-buttons {
@@ -40,7 +86,7 @@ header.hero h2 {
   background: var(--accent);
   color: var(--text-dark);
   padding: 0.6rem 1.2rem;
-  margin: 0 0.5rem;
+  margin: 0.4rem;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
@@ -51,8 +97,14 @@ header.hero h2 {
   color: var(--text-light);
 }
 
+.btn.accent {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+/* Sections */
 section {
-  padding: 2rem 10%;
+  padding: 3rem 10%;
 }
 
 section h2 {
@@ -60,13 +112,68 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-.experience-item {
-  margin-bottom: 1rem;
+/* About */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
 }
 
+.about-photo {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 3px solid var(--secondary);
+}
+
+/* Experience */
+.experience-item {
+  margin-bottom: 1.5rem;
+}
+
+.experience-item h3 {
+  margin: 0;
+  color: var(--secondary);
+}
+
+.experience-item span {
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+/* Skills */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skills-grid span {
+  background: var(--secondary);
+  color: var(--text-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Certifications */
+.certifications {
+  list-style: square;
+  padding-left: 1.2rem;
+}
+
+/* Footer */
 footer {
   background: var(--primary);
   color: var(--text-light);
   text-align: center;
   padding: 2rem 1rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
