@@ -131,10 +131,13 @@ header.hero::before {
   transition: transform 0.5s ease-in-out;
 }
 
-.carousel img {
+#about .carousel img {
   width: 100%;
-  flex-shrink: 0;
+  height: auto;
+  max-height: 400px;   /* keeps them from being too tall */
+  object-fit: contain; /* ensures the whole image is visible */
 }
+
 
 .carousel-btn {
   position: absolute;
