@@ -269,11 +269,11 @@ footer a:hover {
 #cases .carousel-track {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 100%; /* ensures proper layout */
+  width: 200%; /* 2 slides → 200% */
 }
 
 #cases iframe {
-  flex: 0 0 100%; /* each iframe takes 100% width */
+  flex: 0 0 100%; /* force each slide to take full width */
   height: 450px;
   border: none;
 }
