@@ -63,9 +63,11 @@ header.hero {
   background: url('images/banner.png') center/cover no-repeat;
   color: var(--text-light);
   text-align: center;
-  padding: 6rem 1rem 4rem;
+  padding: 4rem 1rem 2rem; /* reduced from 6rem 1rem 4rem */
   position: relative;
+  min-height: 300px; /* ensures it's not too short */
 }
+
 
 header.hero::before {
   content: "";
