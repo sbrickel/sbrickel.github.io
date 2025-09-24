@@ -149,6 +149,28 @@ header.hero::before {
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
+/* Carousel indicators */
+.carousel-indicators {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.carousel-indicators .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-indicators .dot.active {
+  background: var(--accent);
+}
+
+
 /* Skills */
 .skills-grid {
   display: flex;
