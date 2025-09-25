@@ -56,3 +56,19 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   updateCarousel();
   startAutoplay();
 });
+
+// Hamburger Menu
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+
+navToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Close menu after clicking a link (mobile UX best practice)
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
