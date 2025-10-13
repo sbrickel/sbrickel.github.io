@@ -464,3 +464,29 @@ footer a:hover {
   }
 }
 
+/* Headline adjustments */
+.hero h2 {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Strengths List for AI/Automation Focus */
+.strengths-list li {
+  background: #fff;
+  border-left: 4px solid var(--secondary);
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+}
+
+/* Case Studies */
+.case-slide {
+  flex: 0 0 100%;
+  padding: 1.2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
