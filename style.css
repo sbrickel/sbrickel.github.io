@@ -19,7 +19,7 @@ body {
   line-height: 1.6;
 }
 
-/* ═══ SECTION SPACING FIX ═══ */
+/* ═══ SECTION SPACING ═══ */
 
 section {
   padding: 3rem 0;
@@ -94,12 +94,10 @@ section {
     background: var(--primary);
     margin-top: 0.5rem;
   }
-
   .nav-links.active {
     display: flex;
     animation: slideDown 0.3s ease-out;
   }
-
   .nav-toggle {
     display: block;
   }
@@ -159,15 +157,8 @@ header.hero::before {
   display: inline-block;
 }
 
-.btn.secondary {
-  background: var(--secondary);
-  color: var(--text-light);
-}
-
-.btn.accent {
-  background: var(--accent);
-  color: var(--text-dark);
-}
+.btn.secondary { background: var(--secondary); color: var(--text-light); }
+.btn.accent    { background: var(--accent);    color: var(--text-dark); }
 
 .btn:hover,
 .nav-links a:hover {
@@ -242,21 +233,12 @@ header.hero::before {
   margin-bottom: 1rem;
 }
 
-/* ═══ GRIDS ═══ */
+/* ═══ SKILLS / SERVICES GRID ═══ */
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
-}
-
-/* YouTube topics grid — centred fix */
-.yt-topics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  max-width: 1100px;
-  margin: 1rem auto 0;
 }
 
 /* ═══ EXPERIENCE ═══ */
@@ -294,26 +276,27 @@ header.hero::before {
   font-size: 0.95rem;
 }
 
-/* ═══ CASE STUDIES ═══ */
+/* ═══ CASE STUDIES — enlarged PDF carousel ═══ */
 
-#cases .carousel {
+#cases-carousel {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
-  max-width: 800px;
-  margin: auto;
-  border-radius: 8px;
-  border: 2px solid var(--secondary);
 }
 
-#cases .carousel-track {
+#cases-carousel .carousel-track {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 200%;
 }
 
-#cases iframe {
+/* ENLARGED: was 450px, now 700px for readability */
+#cases-carousel iframe {
   flex: 0 0 100%;
-  height: 450px;
+  width: 100%;
+  height: 700px;
   border: none;
 }
 
@@ -327,6 +310,45 @@ header.hero::before {
 .video-container iframe {
   max-width: 100%;
   border-radius: 8px;
+}
+
+/* ═══ YOUTUBE PLAYLIST CARDS — 3 cards centred ═══
+   Using flexbox with justify-content: center so 3 cards
+   sit centred rather than left-aligned in a grid */
+
+.yt-topics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto 0;
+  max-width: 1100px;
+}
+
+.yt-topics-grid .card {
+  flex: 0 1 300px;  /* each card max 300px, shrinks if needed */
+}
+
+.yt-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 0.6rem;
+}
+
+.yt-link {
+  color: var(--secondary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.yt-link:hover {
+  text-decoration: underline;
 }
 
 /* ═══ EDUCATION ═══ */
@@ -376,16 +398,6 @@ footer a:hover {
   z-index: 1000;
 }
 
-/* ═══ CASE STUDY PLACEHOLDER ═══ */
-
-.case-slide {
-  flex: 0 0 100%;
-  padding: 1.2rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
 /* ═══ MOBILE RESPONSIVE ═══ */
 
 @media (max-width: 768px) {
@@ -424,10 +436,20 @@ footer a:hover {
   }
 
   .experience-grid,
-  .skills-grid,
-  .yt-topics-grid {
+  .skills-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  /* YouTube cards stack on mobile */
+  .yt-topics-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .yt-topics-grid .card {
+    flex: 0 1 100%;
+    width: 100%;
   }
 
   .card {
@@ -439,8 +461,9 @@ footer a:hover {
     max-height: 220px;
   }
 
-  #cases iframe {
-    height: 300px;
+  /* PDF readable on mobile — reduce height */
+  #cases-carousel iframe {
+    height: 400px;
   }
 
   .strengths-list li {
@@ -454,7 +477,6 @@ footer a:hover {
   }
 
   footer {
-    text-align: center;
     padding: 1.5rem 1rem;
     font-size: 0.9rem;
   }
