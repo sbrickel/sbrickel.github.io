@@ -16,8 +16,68 @@
   <meta name="twitter:image" content="images/profile.jpg">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Cookie Banner Styles -->
+  <style>
+    #cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1a1a2e;
+      color: #f0f0f0;
+      padding: 1.2rem 2rem;
+      z-index: 99999;
+      font-family: sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    #cookie-banner .cookie-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    #cookie-banner p {
+      flex: 1;
+      min-width: 240px;
+      margin: 0;
+    }
+    #cookie-banner a { color: #e94560; }
+    .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; flex-wrap: wrap; }
+    .cookie-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .cookie-btn:hover { opacity: 0.85; }
+    .cookie-btn-accept { background: #e94560; color: #fff; }
+    .cookie-btn-reject { background: transparent; color: #f0f0f0; border: 1px solid rgba(255,255,255,0.4); }
+  </style>
 </head>
 <body>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-inner">
+      <p>
+        This site uses cookies from embedded third-party services (YouTube, Buy Me a Coffee, Tally). Strictly necessary cookies are always active.
+        <a href="cookies.html">Cookie Policy</a> &middot; <a href="privacy.html">Privacy Policy</a>
+      </p>
+      <div class="cookie-btns">
+        <button class="cookie-btn cookie-btn-reject" id="cookie-reject">Reject non-essential</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept cookies</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Navigation -->
   <nav class="navbar">
@@ -375,7 +435,14 @@
     </div>
     -->
 
-    <p style="margin-top:1.5rem;font-size:0.85rem;opacity:0.7;">© 2026 Dr. Sebastian Brickel · AI &amp; Automation Strategy · Digital Transformation Consultant</p>
+    <!-- Legal Links -->
+    <p style="margin-top:1.5rem;font-size:0.8rem;opacity:0.6;">
+      <a href="legal.html" style="color:inherit;">Legal Notice</a> &middot;
+      <a href="privacy.html" style="color:inherit;">Privacy Policy</a> &middot;
+      <a href="cookies.html" style="color:inherit;">Cookie Policy</a>
+    </p>
+
+    <p style="margin-top:0.75rem;font-size:0.85rem;opacity:0.7;">© 2026 Dr. Sebastian Brickel · AI &amp; Automation Strategy · Digital Transformation Consultant</p>
   </footer>
 
   <!-- Back to Top -->
@@ -383,18 +450,50 @@
 
   <script src="script.js"></script>
 
-  <!-- Buy Me a Coffee floating widget -->
-  <script
-    data-name="BMC-Widget"
-    data-cfasync="false"
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="remoteconsultantsebastian"
-    data-description="Support me on Buy me a coffee!"
-    data-message=""
-    data-color="#f9a826"
-    data-position="Right"
-    data-x_margin="18"
-    data-y_margin="18">
+  <!-- Cookie Consent Logic -->
+  <script>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      var banner = document.getElementById('cookie-banner');
+
+      if (!consent) {
+        banner.style.display = 'block';
+      }
+
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        banner.style.display = 'none';
+        loadThirdPartyScripts();
+      });
+
+      document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        banner.style.display = 'none';
+      });
+
+      if (consent === 'accepted') {
+        loadThirdPartyScripts();
+      }
+
+      function loadThirdPartyScripts() {
+        // Buy Me a Coffee widget - only loads after consent
+        if (!document.getElementById('bmc-widget-script')) {
+          var bmcScript = document.createElement('script');
+          bmcScript.id = 'bmc-widget-script';
+          bmcScript.setAttribute('data-name', 'BMC-Widget');
+          bmcScript.setAttribute('data-cfasync', 'false');
+          bmcScript.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+          bmcScript.setAttribute('data-id', 'remoteconsultantsebastian');
+          bmcScript.setAttribute('data-description', 'Support me on Buy me a coffee!');
+          bmcScript.setAttribute('data-message', '');
+          bmcScript.setAttribute('data-color', '#f9a826');
+          bmcScript.setAttribute('data-position', 'Right');
+          bmcScript.setAttribute('data-x_margin', '18');
+          bmcScript.setAttribute('data-y_margin', '18');
+          document.body.appendChild(bmcScript);
+        }
+      }
+    })();
   </script>
 
 </body>
