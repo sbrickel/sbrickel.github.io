@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Readiness Results — The Remote Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:  #1a2a6c;
+    --teal:  #2bc4ad;
+    --amber: #f9a826;
+    --light: #f5fbf9;
+    --ink:   #0f1a3a;
+    --mid:   #4a5a7a;
+    --rule:  #d0dde8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--ink); min-height: 100vh; }
+  .page { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* HEADER */
+  header { border-left: 5px solid var(--teal); padding-left: 24px; margin-bottom: 36px; }
+  .brand-line { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 4vw, 36px); line-height: 1.15; color: var(--navy); margin-bottom: 8px; }
+  .header-rule { width: 48px; height: 3px; background: var(--amber); margin-top: 16px; }
+
+  /* SCORE HERO */
+  .score-hero { background: var(--navy); border-radius: 4px; padding: 32px 36px; margin-bottom: 32px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .score-number { font-family: 'DM Serif Display', serif; font-size: 72px; color: var(--amber); line-height: 1; flex-shrink: 0; }
+  .score-meta { flex: 1; min-width: 200px; }
+  .score-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .score-tier { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--light); margin-bottom: 8px; }
+  .score-bar-bg { height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; margin-top: 12px; }
+  .score-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+
+  /* DIMENSION GRID */
+  .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .dim-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 16px; text-align: center; position: relative; overflow: hidden; }
+  .dim-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+  .dim-card.strong::after { background: var(--teal); }
+  .dim-card.mid::after { background: var(--amber); }
+  .dim-card.weak::after { background: #e05c5c; }
+  .dim-name { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+  .dim-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--navy); }
+  .dim-max { font-size: 11px; color: var(--mid); }
+  .dim-label { font-size: 11px; margin-top: 4px; font-weight: 500; }
+  .dim-card.strong .dim-label { color: var(--teal); }
+  .dim-card.mid .dim-label { color: #b87a00; }
+  .dim-card.weak .dim-label { color: #c04040; }
+
+  /* OUTCOME BLOCK */
+  .outcome-block { border-radius: 4px; padding: 24px 28px; margin-bottom: 32px; border-left: 5px solid; }
+  .outcome-block.low  { background: #fdf0f0; border-color: #e05c5c; }
+  .outcome-block.mid  { background: #fff8e6; border-color: var(--amber); }
+  .outcome-block.high { background: #e8f8f5; border-color: var(--teal); }
+  .outcome-block h2 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 12px; }
+  .outcome-block p { font-size: 14px; line-height: 1.75; color: var(--ink); }
+  .outcome-block p + p { margin-top: 10px; }
+
+  /* WEAK DIMS */
+  .weak-list { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 20px 24px; margin-bottom: 32px; }
+  .weak-list h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 14px; }
+  .weak-item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--rule); font-size: 13.5px; line-height: 1.55; }
+  .weak-item:last-child { border-bottom: none; }
+  .weak-dot { width: 8px; height: 8px; border-radius: 50%; background: #e05c5c; flex-shrink: 0; margin-top: 5px; }
+  .weak-dot.amber { background: var(--amber); }
+
+  /* CTA SECTION */
+  .cta-section { margin-bottom: 32px; }
+  .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+  .cta-section .sub { font-size: 14px; color: var(--mid); margin-bottom: 20px; }
+
+  .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+  .cta-card { border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; border: 1.5px solid transparent; }
+  .cta-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+  .cta-card.youtube { background: var(--navy); border-color: var(--navy); }
+  .cta-card.bmac    { background: var(--amber); border-color: var(--amber); }
+  .cta-card.booking { background: white; border-color: var(--teal); }
+
+  .cta-icon { font-size: 22px; }
+  .cta-title { font-family: 'DM Serif Display', serif; font-size: 16px; }
+  .cta-card.youtube .cta-title,
+  .cta-card.youtube .cta-body { color: var(--light); }
+  .cta-card.bmac .cta-title,
+  .cta-card.bmac .cta-body { color: var(--ink); }
+  .cta-card.booking .cta-title,
+  .cta-card.booking .cta-body { color: var(--navy); }
+  .cta-body { font-size: 12.5px; line-height: 1.6; }
+  .cta-arrow { font-family: 'DM Mono', monospace; font-size: 11px; margin-top: auto; }
+  .cta-card.youtube .cta-arrow { color: var(--teal); }
+  .cta-card.bmac    .cta-arrow { color: var(--ink); opacity: 0.6; }
+  .cta-card.booking .cta-arrow { color: var(--teal); }
+
+  /* BOOKING BLOCK */
+  .booking-block { margin-top: 32px; background: white; border: 1.5px solid var(--teal); border-radius: 4px; padding: 28px; }
+  .booking-block h2 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 10px; }
+  .booking-block p { font-size: 14px; line-height: 1.75; color: var(--mid); margin-bottom: 20px; }
+  .booking-btn { display: inline-block; background: var(--teal); color: white; text-decoration: none; padding: 12px 28px; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; transition: background 0.15s; }
+  .booking-btn:hover { background: var(--navy); }
+
+  .retake-link { display: inline-block; margin-top: 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--mid); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+  .retake-link:hover { color: var(--navy); border-color: var(--navy); }
+
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+  .footer-brand { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); line-height: 1.8; }
+  .footer-brand strong { color: var(--navy); font-size: 13px; }
+  .footer-links { font-size: 12px; color: var(--mid); text-align: right; line-height: 1.9; }
+  .footer-links a { color: var(--teal); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="brand-line">The Remote Consultant · Dr. Sebastian Brickel</div>
+    <h1 id="result-heading">Your AI Adoption<br>Readiness Results</h1>
+    <div class="header-rule"></div>
+  </header>
+
+  <!-- SCORE HERO -->
+  <div class="score-hero">
+    <div class="score-number" id="hero-score">—</div>
+    <div class="score-meta">
+      <div class="score-label">Overall Score</div>
+      <div class="score-tier" id="hero-tier">—</div>
+      <div class="score-bar-bg">
+        <div class="score-bar" id="hero-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIMENSION CARDS -->
+  <div class="dim-grid" id="dim-grid"></div>
+
+  <!-- OUTCOME -->
+  <div class="outcome-block" id="outcome-block">
+    <h2 id="outcome-title"></h2>
+    <div id="outcome-body"></div>
+  </div>
+
+  <!-- WEAK DIMENSIONS -->
+  <div class="weak-list" id="weak-list" style="display:none">
+    <h3>Dimensions to address first</h3>
+    <div id="weak-items"></div>
+  </div>
+
+  <!-- THANK YOU + CTAs -->
+  <div class="cta-section">
+    <h2>Thank you for completing the checklist.</h2>
+    <p class="sub">If this was useful, here are three ways to go further — all free.</p>
+    <div class="cta-grid">
+      <a class="cta-card youtube" href="https://www.youtube.com/@TheRemoteConsultantSebastian?sub_confirmation=1" target="_blank">
+        <div class="cta-icon">▶</div>
+        <div class="cta-title">Subscribe on YouTube</div>
+        <div class="cta-body">Practical frameworks for AI adoption, automation, and digital transformation. New videos every fortnight.</div>
+        <div class="cta-arrow">Subscribe →</div>
+      </a>
+      <a class="cta-card bmac" href="https://buymeacoffee.com/RemoteConsultantSebastian" target="_blank">
+        <div class="cta-icon">☕</div>
+        <div class="cta-title">Buy Me a Coffee</div>
+        <div class="cta-body">This checklist is free. If it was worth something to you, a coffee keeps the content coming.</div>
+        <div class="cta-arrow">Support →</div>
+      </a>
+      <a class="cta-card booking" href="https://tally.so/r/aQxgRb" target="_blank">
+        <div class="cta-icon">◈</div>
+        <div class="cta-title">Book a Conversation</div>
+        <div class="cta-body" id="booking-cta-body">Let's talk about where your organisation is and what makes sense next.</div>
+        <div class="cta-arrow">Get in touch →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- BOOKING BLOCK -->
+  <div class="booking-block">
+    <h2 id="booking-title">Want to talk through your results?</h2>
+    <p id="booking-body">Fill in a short form and I will get back to you within two business days.</p>
+    <a class="booking-btn" href="https://tally.so/r/aQxgRb" target="_blank">Get in touch →</a>
+    <br>
+    <a class="retake-link" href="checklist.html">← Retake the checklist</a>
+  </div>
+
+  <footer>
+    <div class="footer-brand">
+      <strong>Dr. Sebastian Brickel</strong><br>
+      The Remote Consultant<br>
+      Practical frameworks. Evidence-based. No hype.
+    </div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@TheRemoteConsultantSebastian?sub_confirmation=1">YouTube</a><br>
+      <a href="https://linkedin.com/in/sebastian-brickel">LinkedIn</a><br>
+      <a href="https://buymeacoffee.com/RemoteConsultantSebastian">Buy Me a Coffee</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const DIM_NAMES = ['Strategy', 'Data', 'Leadership', 'Use Case', 'Org Ready'];
+  const MAX_SCORE = 40; // 20 questions × 2
+
+  const TIERS = [
+    { min: 30, label: 'Ready to proceed', color: '#2bc4ad', barColor: '#2bc4ad' },
+    { min: 18, label: 'Partially ready', color: '#f9a826', barColor: '#f9a826' },
+    { min: 0,  label: 'Foundation work needed', color: '#e05c5c', barColor: '#e05c5c' }
+  ];
+
+  const OUTCOMES = {
+    high: {
+      cls: 'high',
+      title: 'Your foundations are solid.',
+      body: `<p>You have the strategy, data, leadership alignment, and organisational readiness to move forward. The risk now is over-engineering — resist the urge to build a platform when a workflow will do.</p>
+             <p>Pick your smallest viable use case. Define your MVP. Aim to go live within four weeks. Measure, learn, iterate.</p>`
+    },
+    mid: {
+      cls: 'mid',
+      title: 'You have real capability — but blockers will surface.',
+      body: `<p>Your organisation is not starting from zero, but one or more dimensions will create friction mid-project. A stalled initiative costs more than a delayed start.</p>
+             <p>Address your weakest dimension before committing resources. In parallel, identify a small, low-risk use case where your strong areas can deliver a quick win. Proof of concept builds the political capital to fix the rest.</p>`
+    },
+    low: {
+      cls: 'low',
+      title: 'The foundations need work before you start.',
+      body: `<p>Proceeding now carries a high risk of failed adoption — not because the technology does not work, but because the conditions for success are not yet in place.</p>
+             <p>The most common patterns: leadership decisions that never reached the teams, data living in five different places, or a use case that is too broad to deliver anything tangible. These are fixable — but they need to be fixed first.</p>`
+    }
+  };
+
+  const BOOKING = {
+    high: {
+      title: 'Ready to talk about your AI initiative directly?',
+      body:  'Your foundations are in place. Let\'s talk about the specific initiative you want to run — use case selection, tooling, and how to set up for adoption from day one.',
+      cta:   'Your foundations are solid. If you want a second pair of eyes on your initiative before you start, let\'s talk.'
+    },
+    mid: {
+      title: 'Want help identifying where to start?',
+      body:  'Your organisation has real capability, but there are clear gaps. I can help you identify the highest-leverage quick wins and build the foundations in parallel — without stalling everything.',
+      cta:   'You\'re partially ready. Let\'s identify the right starting point and fix the gaps while you move forward.'
+    },
+    low: {
+      title: 'Let\'s get your organisation AI-ready.',
+      body:  'Before any AI initiative succeeds, the foundations need to be in place: data centralisation, leadership communication, use case scoping, and workflow readiness. I help organisations work through exactly this — practically and without the hype.',
+      cta:   'Your organisation needs foundational work before an AI initiative will succeed. I help companies get there — stack, workflows, and practices. Let\'s talk.'
+    }
+  };
+
+  function init() {
+    const params = new URLSearchParams(window.location.search);
+    const total = parseInt(params.get('total')) || 0;
+    const dims = (params.get('d') || '0,0,0,0,0').split(',').map(Number);
+
+    // Score hero
+    document.getElementById('hero-score').textContent = total;
+
+    let tier = TIERS[2];
+    let tierKey = 'low';
+    if (total >= 30) { tier = TIERS[0]; tierKey = 'high'; }
+    else if (total >= 18) { tier = TIERS[1]; tierKey = 'mid'; }
+
+    document.getElementById('hero-tier').textContent = tier.label;
+    document.getElementById('hero-tier').style.color = tier.color;
+    document.getElementById('hero-bar').style.width = `${(total/MAX_SCORE)*100}%`;
+    document.getElementById('hero-bar').style.background = `linear-gradient(90deg, #2bc4ad, ${tier.barColor})`;
+
+    // Dimension cards
+    const grid = document.getElementById('dim-grid');
+    dims.forEach((val, i) => {
+      const pct = val / 8; // max per dim is 8 (4 questions × 2)
+      const cls = pct >= 0.75 ? 'strong' : pct >= 0.5 ? 'mid' : 'weak';
+      const lbl = pct >= 0.75 ? 'Strong' : pct >= 0.5 ? 'Review' : 'Address first';
+      grid.innerHTML += `
+        <div class="dim-card ${cls}">
+          <div class="dim-name">${DIM_NAMES[i]}</div>
+          <div class="dim-val">${val}</div>
+          <div class="dim-max">/ 8</div>
+          <div class="dim-label">${lbl}</div>
+        </div>`;
+    });
+
+    // Outcome
+    const oc = OUTCOMES[tierKey];
+    const ob = document.getElementById('outcome-block');
+    ob.className = `outcome-block ${oc.cls}`;
+    document.getElementById('outcome-title').textContent = oc.title;
+    document.getElementById('outcome-body').innerHTML = oc.body;
+
+    // Weak dimensions list
+    const weak = dims.map((v,i) => ({name: DIM_NAMES[i], val: v, pct: v/8})).filter(d => d.pct < 0.75);
+    if (weak.length > 0) {
+      const wl = document.getElementById('weak-list');
+      wl.style.display = 'block';
+      const wi = document.getElementById('weak-items');
+      weak.forEach(w => {
+        const cls = w.pct >= 0.5 ? 'amber' : '';
+        wi.innerHTML += `<div class="weak-item"><div class="weak-dot ${cls}"></div><div>${w.name}: ${w.val}/8 — ${w.pct >= 0.5 ? 'Needs improvement' : 'Critical gap'}</div></div>`;
+      });
+    }
+
+    // Booking block
+    const bk = BOOKING[tierKey];
+    document.getElementById('booking-title').textContent = bk.title;
+    document.getElementById('booking-body').textContent = bk.body;
+    document.getElementById('booking-cta-body').textContent = bk.cta;
+  }
+
+  init();
+</script>
+</body>
+</html>
