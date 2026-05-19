@@ -27,9 +27,13 @@
   .subtitle { font-size: 14px; color: var(--mid); line-height: 1.6; max-width: 540px; }
   .header-rule { width: 48px; height: 3px; background: var(--amber); margin-top: 16px; }
 
-  .instructions { background: var(--navy); color: var(--light); border-radius: 4px; padding: 18px 22px; margin-bottom: 32px; font-size: 13px; line-height: 1.7; display: flex; gap: 16px; align-items: flex-start; }
+  .instructions { background: var(--navy); color: var(--light); border-radius: 4px; padding: 18px 22px; margin-bottom: 16px; font-size: 13px; line-height: 1.7; display: flex; gap: 16px; align-items: flex-start; }
   .instructions .icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
   .instructions strong { color: var(--amber); }
+
+  /* Privacy notice */
+  .privacy-notice { background: #eef4fb; border: 1px solid var(--rule); border-left: 4px solid var(--teal); border-radius: 4px; padding: 13px 18px; margin-bottom: 28px; font-size: 12px; line-height: 1.7; color: var(--mid); }
+  .privacy-notice strong { color: var(--navy); font-size: 12px; }
 
   .section { margin-bottom: 28px; }
   .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--rule); }
@@ -41,7 +45,6 @@
 
   .item-text { font-size: 13.5px; line-height: 1.55; color: var(--ink); display: flex; align-items: flex-start; gap: 8px; }
 
-  /* Tooltip */
   .tip-wrap { position: relative; display: inline-flex; flex-shrink: 0; margin-top: 1px; }
   .tip-icon { width: 16px; height: 16px; border-radius: 50%; background: var(--rule); color: var(--mid); font-size: 10px; font-family: 'DM Mono', monospace; display: flex; align-items: center; justify-content: center; cursor: default; flex-shrink: 0; transition: background 0.15s; }
   .tip-icon:hover { background: var(--teal); color: white; }
@@ -49,7 +52,6 @@
   .tip-box::before { content: ''; position: absolute; left: -5px; top: 8px; border-width: 5px 5px 5px 0; border-style: solid; border-color: transparent var(--ink) transparent transparent; }
   .tip-wrap:hover .tip-box { display: block; }
 
-  /* Choice buttons */
   .choice-group { display: flex; gap: 5px; flex-shrink: 0; padding-top: 1px; }
   input[type="radio"] { display: none; }
   .choice-label { display: flex; align-items: center; justify-content: center; width: 52px; height: 28px; border-radius: 3px; border: 1.5px solid var(--rule); cursor: pointer; font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 500; color: var(--mid); transition: all 0.12s; user-select: none; }
@@ -59,18 +61,21 @@
   input.maybe:checked + .choice-label { background: #fff8e6; border-color: var(--amber); color: #b87a00; }
   input.no:checked   + .choice-label { background: #fdf0f0; border-color: #e05c5c; color: #c04040; }
 
-  /* Progress */
   .progress-wrap { margin-bottom: 28px; }
   .progress-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 8px; }
   .progress-bar-bg { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; }
   .progress-bar { height: 100%; background: linear-gradient(90deg, var(--teal), var(--amber)); border-radius: 3px; transition: width 0.3s ease; width: 0%; }
 
-  /* Submit */
   .submit-area { margin-top: 36px; text-align: center; }
   .submit-btn { background: var(--navy); color: var(--light); border: none; padding: 14px 40px; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; transition: background 0.15s; }
   .submit-btn:hover:not(:disabled) { background: var(--teal); }
   .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .submit-note { font-size: 12px; color: var(--mid); margin-top: 10px; }
+
+  /* Submission status */
+  .status-msg { margin-top: 14px; font-size: 12px; font-family: 'DM Mono', monospace; min-height: 18px; }
+  .status-msg.ok  { color: var(--teal); }
+  .status-msg.err { color: #c04040; }
 
   footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
   .footer-brand { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); line-height: 1.8; }
@@ -94,6 +99,11 @@
     <div>
       For each question: <strong>Yes</strong> = clearly true today. <strong>Unsure</strong> = partially true or uncertain. <strong>No</strong> = not yet in place. Hover the <strong>ⓘ</strong> icon for guidance on what each question is really asking.
     </div>
+  </div>
+
+  <!-- PRIVACY NOTICE -->
+  <div class="privacy-notice">
+    <strong>Data notice:</strong> When you submit, your aggregated scores (totals per dimension) are sent anonymously to the author for research purposes. No personal data, IP address, or identifying information is collected or stored. You do not need to create an account or provide an email address to use this checklist.
   </div>
 
   <div class="progress-wrap">
@@ -385,6 +395,7 @@
   <div class="submit-area">
     <button class="submit-btn" id="submit-btn" disabled onclick="submitResults()">See My Results →</button>
     <div class="submit-note" id="submit-note">Answer all 20 questions to continue.</div>
+    <div class="status-msg" id="status-msg"></div>
   </div>
 
   <footer>
@@ -402,6 +413,11 @@
 </div>
 
 <script>
+  // ---------------------------------------------------------------
+  // CONFIGURATION — update WORKER_URL once your Worker is deployed
+  // ---------------------------------------------------------------
+  const WORKER_URL = "https://YOUR_WORKER_NAME.YOUR_ACCOUNT.workers.dev/submit-checklist";
+
   const TOTAL = 20;
 
   function countAnswered() {
@@ -427,10 +443,15 @@
     }
   }
 
-  function submitResults() {
+  async function submitResults() {
+    const btn = document.getElementById('submit-btn');
+    const statusEl = document.getElementById('status-msg');
+
+    // Collect scores
     let total = 0;
-    let dims = [0,0,0,0,0];
+    let dims = [0, 0, 0, 0, 0];
     const ranges = [[0,3],[4,7],[8,11],[12,15],[16,19]];
+
     for (let i = 0; i < TOTAL; i++) {
       const el = document.querySelector(`input[name="q${i}"]:checked`);
       const val = el ? parseInt(el.value) : 0;
@@ -439,6 +460,19 @@
         if (i >= ranges[s][0] && i <= ranges[s][1]) dims[s] += val;
       }
     }
+
+    // Fire-and-forget to Odoo via Worker — do not block navigation
+    btn.disabled = true;
+    statusEl.textContent = "";
+
+    fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ total, dimensions: dims }),
+      keepalive: true,   // ensures request completes even if page navigates away
+    }).catch(() => {}); // silent fail — user experience unaffected
+
+    // Navigate to results immediately regardless of submission outcome
     const params = new URLSearchParams({ total, d: dims.join(',') });
     window.location.href = `results.html?${params.toString()}`;
   }
