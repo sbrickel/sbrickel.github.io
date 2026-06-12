@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <title>Privacy Policy | Dr. Sebastian Brickel</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="style.css">
   <style>
-    .legal-nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .legal-nav { background: #1a2a6c; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
     .legal-nav a { color: #fff; text-decoration: none; font-size: 0.9rem; }
-    .legal-nav a:hover { color: #e94560; }
+    .legal-nav a:hover { color: #2bc4ad; }
     .legal-container { max-width: 800px; margin: 3rem auto; padding: 0 1.5rem 4rem; }
-    .legal-container h1 { font-size: 2rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+    .legal-container h1 { font-size: 2rem; color: #1a2a6c; margin-bottom: 0.5rem; }
     .last-updated { font-size: 0.85rem; color: #888; margin-bottom: 2.5rem; }
-    .legal-container h2 { font-size: 1.15rem; color: #1a1a2e; margin: 2rem 0 0.75rem; }
+    .legal-container h2 { font-size: 1.15rem; color: #1a2a6c; margin: 2rem 0 0.75rem; }
     .legal-container p { margin-bottom: 1rem; font-size: 0.97rem; line-height: 1.8; }
     .legal-container ul { margin: 0.5rem 0 1rem 1.5rem; }
     .legal-container li { margin-bottom: 0.4rem; font-size: 0.97rem; }
-    .legal-container a { color: #e94560; }
+    .legal-container a { color: #2bc4ad; }
     table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
-    th { background: #1a1a2e; color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
+    th { background: #1a2a6c; color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
     td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
     tr:nth-child(even) td { background: #f8f8f8; }
+
+    @media (max-width: 700px) {
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      th, td { min-width: 120px; }
+    }
     .legal-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid #e0e0e0; margin-top: 3rem; }
   </style>
 </head>
@@ -34,14 +40,14 @@
 
   <div class="legal-container">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: April 2026</p>
+    <p class="last-updated">Last updated: June 2026</p>
 
     <p>This Privacy Policy explains how Dr. Sebastian Brickel ("I", "me", "the controller") collects, uses, and protects personal data when you visit <a href="https://sbrickel.github.io">sbrickel.github.io</a>. It complies with the EU General Data Protection Regulation (GDPR) and Spain's Organic Law 3/2018 (LOPDGDD).</p>
 
     <h2>1. Data Controller</h2>
     <ul>
       <li><strong>Name:</strong> Sebastian Brickel</li>
-      <li><strong>Address:</strong> Valencia, Spain</li>
+      <li><strong>Address:</strong> Carrer de l'Almirall Cruïlles, 38, 8, 46022 València, Spain</li>
       <li><strong>Email:</strong> <a href="mailto:sebastian.brickel@yahoo.com">sebastian.brickel@yahoo.com</a></li>
     </ul>
 
@@ -82,6 +88,12 @@
           <td>Video playback functionality</td>
           <td>Consent (Art. 6(1)(a) GDPR)</td>
         </tr>
+        <tr>
+          <td>Anonymous checklist scores (aggregated totals per dimension only)</td>
+          <td>AI Adoption Readiness Checklist on this site</td>
+          <td>Research into AI readiness patterns; improving the checklist</td>
+          <td>Legitimate interest (Art. 6(1)(f) GDPR) — no personal data is collected</td>
+        </tr>
       </tbody>
     </table>
 
@@ -91,10 +103,13 @@
     <p>This website integrates the following third-party services that may process personal data:</p>
     <ul>
       <li><strong>GitHub Pages</strong> (hosting) — GitHub, Inc., USA. Subject to GitHub's Privacy Policy. Data may be transferred to the USA under standard contractual clauses.</li>
-      <li><strong>Tally.so</strong> (contact form) — Tally SRL, Belgium. Data submitted via the contact form is processed by Tally. See <a href="https://tally.so/privacy" target="_blank">Tally's Privacy Policy</a>.</li>
+      <li><strong>Tally.so</strong> (contact form) — Tally SRL, Belgium. The in-page form pop-up loads only after you accept non-essential cookies; without consent, the contact button links to Tally's own website instead. Data submitted via the form is processed by Tally. See <a href="https://tally.so/privacy" target="_blank">Tally's Privacy Policy</a>.</li>
       <li><strong>Buy Me a Coffee</strong> (support widget) — Buy Me a Coffee, Inc., USA. See <a href="https://www.buymeacoffee.com/privacy" target="_blank">BMAC Privacy Policy</a>.</li>
-      <li><strong>YouTube / Google</strong> (embedded video, youtube-nocookie.com) — Google Ireland Ltd, Ireland. The nocookie domain limits tracking unless you interact with the video. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
-      <li><strong>Font Awesome</strong> (icons, loaded via CDN) — Fonticons, Inc., USA. May record your IP address for CDN delivery.</li>
+      <li><strong>YouTube / Google</strong> (embedded video, youtube-nocookie.com) — Google Ireland Ltd, Ireland. The video player loads only when you actively click to load it; until then, no request is made to YouTube. The nocookie domain further limits tracking. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+      <li><strong>Google Fonts</strong> (web font delivery) — Google Ireland Ltd. Loading the Montserrat typeface from Google's CDN transmits your IP address to Google for content delivery. No cookies are set. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+      <li><strong>Cloudflare Workers</strong> (checklist submission relay) — Cloudflare, Inc., USA. When you submit the AI Adoption Readiness Checklist, your anonymous aggregated scores are relayed through a Cloudflare Worker. Cloudflare technically processes your IP address in transit but it is not stored with the submission. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare's Privacy Policy</a>.</li>
+      <li><strong>Odoo (self-hosted CRM)</strong> — the anonymous checklist scores are stored in a self-hosted Odoo instance operated by the data controller. No personal or identifying data is stored with the scores.</li>
+      
     </ul>
 
     <h2>4. Data Retention</h2>
@@ -105,7 +120,7 @@
     </ul>
 
     <h2>5. International Transfers</h2>
-    <p>Some third-party services (GitHub, Buy Me a Coffee, Font Awesome) are based in the United States. Data transfers to the USA take place on the basis of standard contractual clauses (SCCs) or other appropriate safeguards recognised under GDPR Chapter V.</p>
+    <p>Some third-party services (GitHub, Buy Me a Coffee, Cloudflare) are based in the United States. Data transfers to the USA take place on the basis of standard contractual clauses (SCCs) or other appropriate safeguards recognised under GDPR Chapter V.</p>
 
     <h2>6. Your Rights</h2>
     <p>Under GDPR and the LOPDGDD, you have the right to:</p>

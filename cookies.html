@@ -3,28 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <title>Cookie Policy | Dr. Sebastian Brickel</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="style.css">
   <style>
-    .legal-nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .legal-nav { background: #1a2a6c; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
     .legal-nav a { color: #fff; text-decoration: none; font-size: 0.9rem; }
-    .legal-nav a:hover { color: #e94560; }
+    .legal-nav a:hover { color: #2bc4ad; }
     .legal-container { max-width: 800px; margin: 3rem auto; padding: 0 1.5rem 4rem; }
-    .legal-container h1 { font-size: 2rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+    .legal-container h1 { font-size: 2rem; color: #1a2a6c; margin-bottom: 0.5rem; }
     .last-updated { font-size: 0.85rem; color: #888; margin-bottom: 2.5rem; }
-    .legal-container h2 { font-size: 1.15rem; color: #1a1a2e; margin: 2rem 0 0.75rem; }
+    .legal-container h2 { font-size: 1.15rem; color: #1a2a6c; margin: 2rem 0 0.75rem; }
     .legal-container p { margin-bottom: 1rem; font-size: 0.97rem; line-height: 1.8; }
     .legal-container ul { margin: 0.5rem 0 1rem 1.5rem; }
     .legal-container li { margin-bottom: 0.4rem; font-size: 0.97rem; }
-    .legal-container a { color: #e94560; }
+    .legal-container a { color: #2bc4ad; }
     table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
-    th { background: #1a1a2e; color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
+    th { background: #1a2a6c; color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
     td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
     tr:nth-child(even) td { background: #f8f8f8; }
+
+    @media (max-width: 700px) {
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      th, td { min-width: 120px; }
+    }
     .legal-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid #e0e0e0; margin-top: 3rem; }
-    .btn-outline { display: inline-block; padding: 0.5rem 1.2rem; border: 2px solid #e94560; color: #e94560; border-radius: 4px; text-decoration: none; font-size: 0.9rem; cursor: pointer; background: none; font-family: sans-serif; }
-    .btn-outline:hover { background: #e94560; color: #fff; }
+    .btn-outline { display: inline-block; padding: 0.5rem 1.2rem; border: 2px solid #2bc4ad; color: #2bc4ad; border-radius: 4px; text-decoration: none; font-size: 0.9rem; cursor: pointer; background: none; font-family: sans-serif; }
+    .btn-outline:hover { background: #2bc4ad; color: #fff; }
   </style>
 </head>
 <body>
@@ -36,7 +42,7 @@
 
   <div class="legal-container">
     <h1>Cookie Policy</h1>
-    <p class="last-updated">Last updated: April 2026</p>
+    <p class="last-updated">Last updated: June 2026</p>
 
     <p>This Cookie Policy explains what cookies and similar technologies are used on <a href="https://sbrickel.github.io">sbrickel.github.io</a>, why they are used, and how you can manage your preferences. It should be read alongside the <a href="privacy.html">Privacy Policy</a>.</p>
 
@@ -74,7 +80,7 @@
           <td>VISITOR_INFO1_LIVE, YSC, yt-remote-*</td>
           <td>YouTube / Google</td>
           <td>Functional / third-party</td>
-          <td>Video playback preferences and statistics (set only if you interact with the embedded video)</td>
+          <td>Video playback preferences and statistics. The player loads only when you actively click to load the video.</td>
           <td>Up to 6 months</td>
         </tr>
         <tr>
@@ -88,20 +94,14 @@
           <td>Tally embed</td>
           <td>Tally SRL</td>
           <td>Functional / third-party</td>
-          <td>Enables the contact form widget</td>
-          <td>Session</td>
-        </tr>
-        <tr>
-          <td>Font Awesome CDN</td>
-          <td>Fonticons, Inc.</td>
-          <td>Strictly necessary</td>
-          <td>Delivers icon assets; may log IP for CDN routing</td>
+          <td>Enables the in-page contact form pop-up. Loads only after you accept non-essential cookies; otherwise the contact button links to Tally's website.</td>
           <td>Session</td>
         </tr>
       </tbody>
     </table>
 
     <p>This site does not use advertising cookies, tracking pixels, or behavioural profiling.</p>
+    <p><strong>Note on web fonts:</strong> the Montserrat typeface is loaded from Google Fonts. This sets no cookies but transmits your IP address to Google for content delivery (see the <a href="privacy.html">Privacy Policy</a>).</p>
 
     <h2>3. Cookie Categories</h2>
     <ul>
