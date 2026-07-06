@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/favicon.png">
-<title>Your AI Readiness Results — The Remote Consultant</title>
-<meta name="description" content="Your AI Adoption Readiness results — The Remote Consultant.">
+<title>Your AI Readiness Results - The Remote Consultant</title>
+<meta name="description" content="Your AI Adoption Readiness results - The Remote Consultant.">
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
@@ -125,10 +125,10 @@
 
   <!-- SCORE HERO -->
   <div class="score-hero">
-    <div class="score-number" id="hero-score">—</div>
+    <div class="score-number" id="hero-score">-</div>
     <div class="score-meta">
       <div class="score-label">Overall Score</div>
-      <div class="score-tier" id="hero-tier">—</div>
+      <div class="score-tier" id="hero-tier">-</div>
       <div class="score-bar-bg">
         <div class="score-bar" id="hero-bar"></div>
       </div>
@@ -229,38 +229,38 @@
     high: {
       cls: 'high',
       title: 'Your foundations are solid.',
-      body: `<p>You have the strategy, data, leadership alignment, and organisational readiness to move forward. The risk now is over-engineering — resist the urge to build a platform when a workflow will do.</p>
+      body: `<p>You have the strategy, data, leadership alignment, and organisational readiness to move forward. The risk now is over-engineering - resist the urge to build a platform when a workflow will do.</p>
              <p>Pick your smallest viable use case. Define your MVP. Aim to go live within four weeks. Measure, learn, iterate.</p>`
     },
     mid: {
       cls: 'mid',
-      title: 'You have real capability — but blockers will surface.',
+      title: 'You have real capability - but blockers will surface.',
       body: `<p>Your organisation is not starting from zero, but one or more dimensions will create friction mid-project. A stalled initiative costs more than a delayed start.</p>
              <p>Address your weakest dimension before committing resources. In parallel, identify a small, low-risk use case where your strong areas can deliver a quick win. Proof of concept builds the political capital to fix the rest.</p>`
     },
     low: {
       cls: 'low',
       title: 'The foundations need work before you start.',
-      body: `<p>Proceeding now carries a high risk of failed adoption — not because the technology does not work, but because the conditions for success are not yet in place.</p>
-             <p>The most common patterns: leadership decisions that never reached the teams, data living in five different places, or a use case that is too broad to deliver anything tangible. These are fixable — but they need to be fixed first.</p>`
+      body: `<p>Proceeding now carries a high risk of failed adoption - not because the technology does not work, but because the conditions for success are not yet in place.</p>
+             <p>The most common patterns: leadership decisions that never reached the teams, data living in five different places, or a use case that is too broad to deliver anything tangible. These are fixable - but they need to be fixed first.</p>`
     }
   };
 
   const BOOKING = {
     high: {
       title: 'Ready to talk about your AI initiative directly?',
-      body:  'Your foundations are in place. Let\'s talk about the specific initiative you want to run — use case selection, tooling, and how to set up for adoption from day one.',
+      body:  'Your foundations are in place. Let\'s talk about the specific initiative you want to run - use case selection, tooling, and how to set up for adoption from day one.',
       cta:   'Your foundations are solid. If you want a second pair of eyes on your initiative before you start, let\'s talk.'
     },
     mid: {
       title: 'Want help identifying where to start?',
-      body:  'Your organisation has real capability, but there are clear gaps. I can help you identify the highest-leverage quick wins and build the foundations in parallel — without stalling everything.',
+      body:  'Your organisation has real capability, but there are clear gaps. I can help you identify the highest-leverage quick wins and build the foundations in parallel - without stalling everything.',
       cta:   'You\'re partially ready. Let\'s identify the right starting point and fix the gaps while you move forward.'
     },
     low: {
       title: 'Let\'s get your organisation AI-ready.',
-      body:  'Before any AI initiative succeeds, the foundations need to be in place: data centralisation, leadership communication, use case scoping, and workflow readiness. I help organisations work through exactly this — practically and without the hype.',
-      cta:   'Your organisation needs foundational work before an AI initiative will succeed. I help companies get there — stack, workflows, and practices. Let\'s talk.'
+      body:  'Before any AI initiative succeeds, the foundations need to be in place: data centralisation, leadership communication, use case scoping, and workflow readiness. I help organisations work through exactly this - practically and without the hype.',
+      cta:   'Your organisation needs foundational work before an AI initiative will succeed. I help companies get there - stack, workflows, and practices. Let\'s talk.'
     }
   };
 
@@ -312,7 +312,7 @@
       const wi = document.getElementById('weak-items');
       weak.forEach(w => {
         const cls = w.pct >= 0.5 ? 'amber' : '';
-        wi.innerHTML += `<div class="weak-item"><div class="weak-dot ${cls}"></div><div>${w.name}: ${w.val}/8 — ${w.pct >= 0.5 ? 'Needs improvement' : 'Critical gap'}</div></div>`;
+        wi.innerHTML += `<div class="weak-item"><div class="weak-dot ${cls}"></div><div>${w.name}: ${w.val}/8 - ${w.pct >= 0.5 ? 'Needs improvement' : 'Critical gap'}</div></div>`;
       });
     }
 
