@@ -444,16 +444,43 @@
   // Start waking it the moment this page loads (earliest signal we have
   // that the user intends to submit) instead of waiting until they click
   // submit, where there's no time budget left to cover a cold boot.
-  // Attempts run sequentially - wait for one to finish before firing the
-  // next - so we never stack up overlapping long-held requests.
+  //
+  // odoo17.skysize.io only wakes on a real browser hit to its actual page
+  // (confirmed: the XML-RPC endpoint fast-fails with "the instance is
+  // asleep, open it in a browser to wake it" instead of waking anything).
+  // A server-side Worker fetch can't do that hit itself either - the page
+  // is behind a Cloudflare JS challenge that only a real browser can pass.
+  // So the wake trigger is a hidden iframe run in the visitor's own
+  // browser, and /wake-odoo (a cheap XML-RPC ping) is used only to check
+  // whether it's awake yet - it never triggers the wake itself.
+  function checkAwake() {
+    return fetch(`${WORKER_BASE}/wake-odoo`)
+      .then(res => res.json())
+      .then(data => !!data.awake)
+      .catch(() => false);
+  }
+
+  function browserWakePing() {
+    return new Promise(resolve => {
+      const f = document.createElement('iframe');
+      f.style.cssText = 'position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;bottom:0;right:0;';
+      f.src = 'https://odoo17.skysize.io/web/login';
+      const done = () => { f.remove(); resolve(); };
+      f.addEventListener('load', done);
+      f.addEventListener('error', done);
+      document.body.appendChild(f);
+      setTimeout(done, 20000); // safety cap in case load/error never fires
+    });
+  }
+
+  // Sequential: wait for each check/ping to finish before the next, so we
+  // never stack up overlapping requests.
   async function wakeOdooLoop() {
-    const maxAttempts = 6;
+    const maxAttempts = 8;
     for (let i = 0; i < maxAttempts; i++) {
-      try {
-        const res = await fetch(`${WORKER_BASE}/wake-odoo`);
-        const data = await res.json();
-        if (data.awake) return;
-      } catch {}
+      if (await checkAwake()) return;
+      await browserWakePing();
+      if (await checkAwake()) return;
     }
   }
   wakeOdooLoop();
