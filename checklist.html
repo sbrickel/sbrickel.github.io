@@ -435,9 +435,28 @@
   // ---------------------------------------------------------------
   // CONFIGURATION - update WORKER_URL once your Worker is deployed
   // ---------------------------------------------------------------
-  const WORKER_URL = "https://sweet-sun-fce2.sebastian-brickel.workers.dev/submit-checklist";
+  const WORKER_BASE = "https://sweet-sun-fce2.sebastian-brickel.workers.dev";
+  const WORKER_URL = `${WORKER_BASE}/submit-checklist`;
 
   const TOTAL = 20;
+
+  // Odoo sleeps when idle and can take well over a minute to cold-boot.
+  // Start waking it the moment this page loads (earliest signal we have
+  // that the user intends to submit) instead of waiting until they click
+  // submit, where there's no time budget left to cover a cold boot.
+  // Attempts run sequentially - wait for one to finish before firing the
+  // next - so we never stack up overlapping long-held requests.
+  async function wakeOdooLoop() {
+    const maxAttempts = 6;
+    for (let i = 0; i < maxAttempts; i++) {
+      try {
+        const res = await fetch(`${WORKER_BASE}/wake-odoo`);
+        const data = await res.json();
+        if (data.awake) return;
+      } catch {}
+    }
+  }
+  wakeOdooLoop();
 
   function countAnswered() {
     let n = 0;
