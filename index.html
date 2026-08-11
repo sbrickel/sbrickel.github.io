@@ -21,6 +21,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Force a strict 2-column layout for .grid-2 (Services and Resources sections).
+       Overrides any auto-fit/auto-fill in style.css that was letting 3 cards
+       fit per row on wider viewports and stranding the 4th on its own line. */
+    .grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+    @media (max-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr !important; }
+    }
+  </style>
 
   <script type="application/ld+json">
   {
