@@ -83,8 +83,6 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
 
 .rose { width: 100%; max-width: 440px; justify-self: center; display: block; }
 
-.rose .needle { animation: settle 3.2s cubic-bezier(.2,.7,.3,1) both; transform-origin: 0 0; }
-@keyframes settle { 0% { transform: rotate(-62deg); } 38% { transform: rotate(14deg); } 62% { transform: rotate(-6deg); } 82% { transform: rotate(2deg); } 100% { transform: rotate(0deg); } }
 .rise { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0s); }
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
@@ -166,8 +164,6 @@ html.js .acc-item:not(.open) .acc-inner { visibility: hidden; transition: visibi
 .contact-lede { margin: 0; font-size: .93rem; color: #e1efec; max-width: 42em; line-height: 1.6; }
 .email-line { margin: .8rem 0 0; font-size: .9rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; }
 .email-line a { color: var(--teal); }
-.copy-btn { font: inherit; font-size: .8rem; font-weight: 700; color: var(--paper); background: transparent; border: 1.5px solid rgba(245,251,249,.5); border-radius: var(--r); padding: .2rem .7rem; cursor: pointer; }
-.copy-btn:hover { background: var(--paper); color: var(--navy); }
 .foot-actions { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: flex-end; }
 .btn-light { border-color: rgba(245,251,249,.55); color: var(--paper); background: transparent; }
 .btn-light:hover { background: var(--paper); color: var(--navy); }
@@ -177,10 +173,6 @@ html.js .acc-item:not(.open) .acc-inner { visibility: hidden; transition: visibi
 .foot-bottom .legal a { font-weight: 400; }
 .foot-copy { color: rgba(245,251,249,.65); }
 .site-footer.slim { padding-top: .6rem; }
-
-/* TOAST */
-.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: var(--ink); color: var(--paper); padding: .7rem 1.2rem; border-radius: var(--r); font-size: .88rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 100000; max-width: 90vw; }
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* COOKIE BANNER */
 #cookie-banner { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--paper); padding: 1.1rem 1.5rem; z-index: 99999; font-size: .85rem; line-height: 1.6; }
