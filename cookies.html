@@ -3,44 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="images/favicon.png">
   <title>Cookie Policy | Dr. Sebastian Brickel</title>
   <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .legal-nav { background: #1a2a6c; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    .legal-nav a { color: #fff; text-decoration: none; font-size: 0.9rem; }
-    .legal-nav a:hover { color: #2bc4ad; }
-    .legal-container { max-width: 800px; margin: 3rem auto; padding: 0 1.5rem 4rem; }
-    .legal-container h1 { font-size: 2rem; color: #1a2a6c; margin-bottom: 0.5rem; }
-    .last-updated { font-size: 0.85rem; color: #888; margin-bottom: 2.5rem; }
-    .legal-container h2 { font-size: 1.15rem; color: #1a2a6c; margin: 2rem 0 0.75rem; }
-    .legal-container p { margin-bottom: 1rem; font-size: 0.97rem; line-height: 1.8; }
-    .legal-container ul { margin: 0.5rem 0 1rem 1.5rem; }
-    .legal-container li { margin-bottom: 0.4rem; font-size: 0.97rem; }
-    .legal-container a { color: #2bc4ad; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
-    th { background: #1a2a6c; color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
-    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
-    tr:nth-child(even) td { background: #f8f8f8; }
-
-    @media (max-width: 700px) {
-      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      th, td { min-width: 120px; }
-    }
-    .legal-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; border-top: 1px solid #e0e0e0; margin-top: 3rem; }
-    .btn-outline { display: inline-block; padding: 0.5rem 1.2rem; border: 2px solid #2bc4ad; color: #2bc4ad; border-radius: 4px; text-decoration: none; font-size: 0.9rem; cursor: pointer; background: none; font-family: sans-serif; }
-    .btn-outline:hover { background: #2bc4ad; color: #fff; }
-  </style>
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-  <nav class="legal-nav">
-    <a href="index.html">← Back to sbrickel.github.io</a>
-    <span style="color:#fff;font-size:0.85rem;opacity:0.6;">Cookie Policy</span>
+    <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <a href="index.html" class="brand"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1a2a6c"/><circle cx="32" cy="32" r="25" fill="none" stroke="#2bc4ad" stroke-width="2"/><polygon points="32,6 37,27 58,32 37,37 32,58 27,37 6,32 27,27" fill="#f5fbf9"/><polygon points="32,6 37,27 32,32 27,27" fill="#f9a826"/><circle cx="32" cy="32" r="2.6" fill="#1a2a6c"/></svg>Dr. Sebastian Brickel</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#services">How I work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#resources">Resources</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <div class="legal-container">
+  <div class="legal-container" id="main">
     <h1>Cookie Policy</h1>
     <p class="last-updated">Last updated: June 2026</p>
 
@@ -131,11 +119,17 @@
 
     <h2>7. Contact</h2>
     <p>For questions about cookie use: <a href="mailto:remoteconsultant.sebastian@gmail.com">remoteconsultant.sebastian@gmail.com</a></p>
-
-    <div class="legal-footer">
-      © 2026 Dr. Sebastian Brickel · <a href="legal.html">Legal Notice</a> · <a href="privacy.html">Privacy Policy</a> · <a href="cookies.html">Cookie Policy</a>
-    </div>
   </div>
 
+  <footer class="site-footer slim">
+    <div class="wrap">
+      <div class="foot-bottom">
+        <nav aria-label="Social"><a href="https://linkedin.com/in/sebastian-brickel" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@TheRemoteConsultantSebastian?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a><a href="https://theremoteconsultant.substack.com" target="_blank" rel="noopener">Substack</a><a href="https://github.com/sbrickel" target="_blank" rel="noopener">GitHub</a></nav>
+        <span class="legal"><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a></span>
+        <span class="foot-copy">&copy; 2026 Dr. Sebastian Brickel &middot; The Remote Consultant</span>
+      </div>
+    </div>
+  </footer>
+<script src="site.js"></script>
 </body>
 </html>

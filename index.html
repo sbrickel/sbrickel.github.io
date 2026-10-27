@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
   {
@@ -54,8 +55,6 @@
 
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
   <div id="cookie-banner" role="dialog" aria-label="Cookie consent">
     <div class="cookie-inner">
       <p>
@@ -69,6 +68,7 @@
     </div>
   </div>
 
+  <a class="skip" href="#main">Skip to content</a>
   <nav class="site-nav" aria-label="Main">
     <div class="wrap">
       <a href="#" class="brand"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1a2a6c"/><circle cx="32" cy="32" r="25" fill="none" stroke="#2bc4ad" stroke-width="2"/><polygon points="32,6 37,27 58,32 37,37 32,58 27,37 6,32 27,27" fill="#f5fbf9"/><polygon points="32,6 37,27 32,32 27,27" fill="#f9a826"/><circle cx="32" cy="32" r="2.6" fill="#1a2a6c"/></svg>Dr. Sebastian Brickel</a>
@@ -86,10 +86,10 @@
   <header class="hero">
     <div class="wrap">
       <div>
-        <h1>AI and automation that survives audits.</h1>
-        <p class="lede">Most small businesses don't need more tools. They need fewer places for data to hide, and more of the boring work done by systems. I build AI and automation that saves real hours, with governance designed in from day one. <strong>I run the work remotely, from anywhere.</strong></p>
-        <p class="byline"><strong>Dr. Sebastian Brickel</strong>, PhD. The Remote Consultant on YouTube and Substack.</p>
-        <div class="actions">
+        <h1 class="rise" style="--d:.1s">AI and automation that survives audits.</h1>
+        <p class="lede rise" style="--d:.35s">Most small businesses don't need more tools. They need fewer places for data to hide, and more of the boring work done by systems. I build AI and automation that saves real hours, with governance designed in from day one. <strong>I run the work remotely, from anywhere.</strong></p>
+        <p class="byline rise" style="--d:.45s"><strong>Dr. Sebastian Brickel</strong>, PhD. The Remote Consultant on YouTube and Substack.</p>
+        <div class="actions rise" style="--d:.55s">
           <a href="https://cal.com/sebastian-brickel/intro" target="_blank" rel="noopener" class="btn btn-primary">Book an intro conversation</a>
           <a href="#services" class="btn btn-line">How I work</a>
         </div>
@@ -105,7 +105,7 @@
     <g font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="18" fill="#1a2a6c" text-anchor="middle">
       <text y="-197">N</text><text x="203" y="6">E</text><text y="215">S</text><text x="-203" y="6">W</text>
     </g>
-    <g id="needle">
+    <g class="needle">
       <polygon points="0,-168 13,0 -13,0" fill="#f9a826"/>
       <polygon points="0,168 13,0 -13,0" fill="#1a2a6c"/>
       <circle r="8" fill="#f5fbf9" stroke="#1a2a6c" stroke-width="2.5"/>
@@ -119,28 +119,24 @@
     <div class="wrap">
       <h2>How I work with companies</h2>
       <p class="intro">For small and mid-sized businesses that want AI and automation to save real time, without creating audit problems later, and for regulated teams that need to show their work, including in medtech and life sciences. I work in German, English, and French, and in Spanish for day-to-day and written work.</p>
-      <ul class="rows">
-        <li class="row">
-          <div><h3>AI &amp; Automation Strategy</h3><span class="tag">Fixed price</span></div>
-          <p>Where to start, what to skip, and what it costs. A clear plan built on your real processes, with the first use case chosen and the risks named.</p>
-          <a href="#contact" class="go">Enquire</a>
-        </li>
-        <li class="row">
-          <div><h3>Workflow Automation</h3><span class="tag">Project</span></div>
-          <p>Automation inside the systems you already run: ERP, CRM, e-commerce. Human review kept where judgement matters, and a clear record of what the system did.</p>
-          <a href="#contact" class="go">Enquire</a>
-        </li>
-        <li class="row">
-          <div><h3>Workshops &amp; Seminars</h3><span class="tag">Fixed scope</span></div>
-          <p>Practical sessions for leadership and sales teams: where AI and automation actually create value, and a working plan built on your own use cases.</p>
-          <a href="#contact" class="go">Enquire</a>
-        </li>
-        <li class="row">
-          <div><h3>Governance &amp; EU AI Act Readiness</h3><span class="tag">Fixed scope</span></div>
-          <p>AI system inventory, risk classification, gap analysis, and a prioritised roadmap, delivered as a written report. For teams that need to show their work.</p>
-          <a href="#contact" class="go">Enquire</a>
-        </li>
-      </ul>
+      <div class="acc">
+        <div class="acc-item">
+          <h3 class="acc-h"><button type="button" class="acc-head" id="svc-t1" aria-expanded="false" aria-controls="svc-p1"><span class="acc-label"><span class="acc-name">AI &amp; Automation Strategy</span><span class="tag">Fixed price</span></span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+          <div class="acc-body" id="svc-p1" role="region" aria-labelledby="svc-t1"><div class="acc-inner"><div><p>Where to start, what to skip, and what it costs. A clear plan built on your real processes, with the first use case chosen and the risks named.</p><a href="#contact" class="go">Enquire</a></div></div></div>
+        </div>
+        <div class="acc-item">
+          <h3 class="acc-h"><button type="button" class="acc-head" id="svc-t2" aria-expanded="false" aria-controls="svc-p2"><span class="acc-label"><span class="acc-name">Workflow Automation</span><span class="tag">Project</span></span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+          <div class="acc-body" id="svc-p2" role="region" aria-labelledby="svc-t2"><div class="acc-inner"><div><p>Automation inside the systems you already run: ERP, CRM, e-commerce. Human review kept where judgement matters, and a clear record of what the system did.</p><a href="#contact" class="go">Enquire</a></div></div></div>
+        </div>
+        <div class="acc-item">
+          <h3 class="acc-h"><button type="button" class="acc-head" id="svc-t3" aria-expanded="false" aria-controls="svc-p3"><span class="acc-label"><span class="acc-name">Workshops &amp; Seminars</span><span class="tag">Fixed scope</span></span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+          <div class="acc-body" id="svc-p3" role="region" aria-labelledby="svc-t3"><div class="acc-inner"><div><p>Practical sessions for leadership and sales teams: where AI and automation actually create value, and a working plan built on your own use cases.</p><a href="#contact" class="go">Enquire</a></div></div></div>
+        </div>
+        <div class="acc-item">
+          <h3 class="acc-h"><button type="button" class="acc-head" id="svc-t4" aria-expanded="false" aria-controls="svc-p4"><span class="acc-label"><span class="acc-name">Governance &amp; EU AI Act Readiness</span><span class="tag">Fixed scope</span></span><span class="acc-icon" aria-hidden="true"></span></button></h3>
+          <div class="acc-body" id="svc-p4" role="region" aria-labelledby="svc-t4"><div class="acc-inner"><div><p>AI system inventory, risk classification, gap analysis, and a prioritised roadmap, delivered as a written report. For teams that need to show their work.</p><a href="#contact" class="go">Enquire</a></div></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -201,83 +197,29 @@
   </section>
   </main>
 
-  <footer id="contact">
+  <footer id="contact" class="site-footer">
     <div class="wrap">
-      <div class="cols">
+      <div class="foot-top">
         <div>
           <h2>Let's talk</h2>
           <p class="contact-lede">If you run a small or mid-sized business and want AI and automation that holds up under audit, I would like to hear about it. Questions about AI governance, audit readiness or automation are welcome, and a first conversation is always open. If you have an interesting idea or proposition, feel free to contact me.</p>
-          <a href="https://cal.com/sebastian-brickel/intro" target="_blank" rel="noopener" class="btn btn-primary">Book an intro conversation</a>
-          <p class="small">Prefer to write first? <a href="https://tally.so/r/aQxgRb" id="contact-btn" target="_blank" rel="noopener">Send a message</a> or email <a href="mailto:remoteconsultant.sebastian@gmail.com">remoteconsultant.sebastian@gmail.com</a></p>
+          <p class="email-line"><a href="mailto:remoteconsultant.sebastian@gmail.com">remoteconsultant.sebastian@gmail.com</a><button type="button" class="copy-btn" data-copy="remoteconsultant.sebastian@gmail.com">Copy</button></p>
         </div>
-        <ul class="footer-links">
-          <li><a href="https://linkedin.com/in/sebastian-brickel" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.youtube.com/@TheRemoteConsultantSebastian?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a></li>
-          <li><a href="https://theremoteconsultant.substack.com" target="_blank" rel="noopener">Substack</a></li>
-          <li><a href="https://github.com/sbrickel" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
+        <div class="foot-actions">
+          <a href="https://cal.com/sebastian-brickel/intro" target="_blank" rel="noopener" class="btn btn-primary">Book an intro conversation</a>
+          <a href="https://tally.so/r/aQxgRb" id="contact-btn" target="_blank" rel="noopener" class="btn btn-light">Send a message</a>
+        </div>
       </div>
-      <div class="footer-legal">
-        <span><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a></span>
-        <span class="footer-copy">&copy; 2026 Dr. Sebastian Brickel &middot; The Remote Consultant</span>
+      <div class="foot-bottom">
+        <nav aria-label="Social"><a href="https://linkedin.com/in/sebastian-brickel" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@TheRemoteConsultantSebastian?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a><a href="https://theremoteconsultant.substack.com" target="_blank" rel="noopener">Substack</a><a href="https://github.com/sbrickel" target="_blank" rel="noopener">GitHub</a></nav>
+        <span class="legal"><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a></span>
+        <span class="foot-copy">&copy; 2026 Dr. Sebastian Brickel &middot; The Remote Consultant</span>
       </div>
     </div>
   </footer>
 
-  <button id="back-to-top" aria-label="Back to top">&uarr;</button>
 
   <script>
-    // ── Navigation ──
-    var navToggle = document.getElementById('nav-toggle');
-    var navLinks = document.getElementById('nav-links');
-    navToggle.addEventListener('click', function () {
-      var open = navLinks.classList.toggle('active');
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () { navLinks.classList.remove('active'); });
-    });
-
-    // ── Back to top ──
-    var topBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', function () {
-      topBtn.classList.toggle('visible', window.scrollY > 600);
-    });
-    topBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-
-    // ── Compass: swings in on load, then follows the pointer ──
-    (function () {
-      var needle = document.getElementById('needle');
-      var rose = document.querySelector('svg.rose');
-      if (!needle || !rose) return;
-      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var angle = still ? 0 : -62, vel = 0, target = 0, last = null, running = false;
-      function draw() { needle.setAttribute('transform', 'rotate(' + angle.toFixed(2) + ')'); }
-      function diff(t, a) { var d = (t - a) % 360; if (d > 180) d -= 360; if (d < -180) d += 360; return d; }
-      function tick(now) {
-        if (last === null) last = now;
-        var dt = Math.min((now - last) / 1000, 0.05); last = now;
-        var d = diff(target, angle);
-        vel += (70 * d - 8 * vel) * dt;
-        angle += vel * dt;
-        draw();
-        if (Math.abs(d) < 0.05 && Math.abs(vel) < 0.05) { angle = target; draw(); running = false; last = null; return; }
-        requestAnimationFrame(tick);
-      }
-      function go() { if (!running) { running = true; requestAnimationFrame(tick); } }
-      draw();
-      if (still) return;
-      go();
-      window.addEventListener('pointermove', function (e) {
-        var r = rose.getBoundingClientRect();
-        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
-        if (Math.abs(dx) + Math.abs(dy) < 4) return;
-        target = Math.atan2(dx, -dy) * 180 / Math.PI;
-        go();
-      }, { passive: true });
-    })();
-
     // ── Click-to-load YouTube (privacy-friendly facade) ──
     var facade = document.getElementById('video-facade');
     function loadVideo() {
@@ -329,5 +271,6 @@
     })();
   </script>
 
+<script src="site.js"></script>
 </body>
 </html>
