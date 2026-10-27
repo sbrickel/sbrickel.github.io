@@ -1,5 +1,5 @@
 /* Shared behaviour for every page: nav, scroll progress, back to top,
-   copy email, scroll spy, accordion. */
+   scroll spy, accordion. */
 (function () {
   var doc = document;
 
@@ -37,25 +37,6 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // Toast + copy email
-  var toast = doc.createElement('div');
-  toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite');
-  doc.body.appendChild(toast);
-  var timer;
-  function say(msg) {
-    toast.textContent = msg; toast.classList.add('show');
-    clearTimeout(timer); timer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
-  }
-  doc.querySelectorAll('[data-copy]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var text = btn.getAttribute('data-copy');
-      function ok() { say('Copied: ' + text); }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(ok, function () { say('Copy failed. Select the address instead.'); });
-      } else { say('Copy failed. Select the address instead.'); }
-    });
-  });
 
   // Scroll spy (index only)
   var spy = Array.prototype.slice.call(doc.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)'));
