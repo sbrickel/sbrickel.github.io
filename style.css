@@ -77,14 +77,6 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
 .btn-line:hover { background: var(--navy); color: var(--paper); }
 
 .rose { width: 100%; max-width: 440px; justify-self: center; display: block; }
-.rose .needle { animation: settle 3.2s cubic-bezier(.2,.7,.3,1) both; transform-origin: 0 0; }
-@keyframes settle {
-  0%   { transform: rotate(-62deg); }
-  38%  { transform: rotate(14deg); }
-  62%  { transform: rotate(-6deg); }
-  82%  { transform: rotate(2deg); }
-  100% { transform: rotate(0deg); }
-}
 
 /* SECTIONS */
 .block { padding: 4.5rem 0; scroll-margin-top: 64px; }
@@ -133,12 +125,12 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
 .res a:hover { color: var(--teal-d); }
 
 /* VIDEO FACADE */
-.video-facade { position: relative; max-width: 720px; margin: 2.5rem 0 0; aspect-ratio: 16 / 9; background: var(--navy); border-radius: var(--r); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; padding: 1rem; }
+.video-facade { position: relative; max-width: 720px; margin: 2.5rem auto 0; aspect-ratio: 16 / 9; background: var(--navy); border-radius: var(--r); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; padding: 1rem; }
 .video-facade .play { width: 64px; height: 64px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--ink); margin-bottom: .9rem; }
 .video-facade p { color: var(--paper); font-size: .85rem; margin: 0; max-width: 420px; }
 .video-facade p strong { color: var(--amber); }
 .video-facade a { color: var(--teal); }
-.video-container { max-width: 720px; margin: 2.5rem 0 0; aspect-ratio: 16 / 9; }
+.video-container { max-width: 720px; margin: 2.5rem auto 0; aspect-ratio: 16 / 9; }
 .video-container iframe { width: 100%; height: 100%; border: 0; border-radius: var(--r); }
 
 /* CONTACT / FOOTER */

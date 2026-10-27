@@ -71,12 +71,11 @@
 
   <nav class="site-nav" aria-label="Main">
     <div class="wrap">
-      <a href="#" class="brand"><img src="images/favicon.svg" alt="" width="30" height="30">Dr. Sebastian Brickel</a>
+      <a href="#" class="brand"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1a2a6c"/><circle cx="32" cy="32" r="25" fill="none" stroke="#2bc4ad" stroke-width="2"/><polygon points="32,6 37,27 58,32 37,37 32,58 27,37 6,32 27,27" fill="#f5fbf9"/><polygon points="32,6 37,27 32,32 27,27" fill="#f9a826"/><circle cx="32" cy="32" r="2.6" fill="#1a2a6c"/></svg>Dr. Sebastian Brickel</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#services">How I work</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#casestudy">Case study</a></li>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -106,7 +105,7 @@
     <g font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="18" fill="#1a2a6c" text-anchor="middle">
       <text y="-197">N</text><text x="203" y="6">E</text><text y="215">S</text><text x="-203" y="6">W</text>
     </g>
-    <g class="needle">
+    <g id="needle">
       <polygon points="0,-168 13,0 -13,0" fill="#f9a826"/>
       <polygon points="0,168 13,0 -13,0" fill="#1a2a6c"/>
       <circle r="8" fill="#f5fbf9" stroke="#1a2a6c" stroke-width="2.5"/>
@@ -167,26 +166,7 @@
     </div>
   </section>
 
-  <section id="casestudy" class="block">
-    <div class="wrap">
-      <h2>Case study: from research bottleneck to qualified pipeline</h2>
-      <p class="intro">One full-time employee. 150 prospects researched per week. 10&ndash;12 outreach emails sent per month. That was the ceiling, not because the person was underperforming, but because manual research consumed everything.</p>
-      <table class="compare">
-        <caption>Before and after</caption>
-        <thead><tr><th scope="col"><span class="sr">Area</span></th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Research</th><td>~150 prospects researched per week, manually</td><td>25&ndash;50 qualified leads with draft emails per day</td></tr>
-          <tr><th scope="row">Qualification</th><td>No qualification or scoring</td><td>Automated scoring, classification, and CRM entry</td></tr>
-          <tr><th scope="row">Outreach</th><td>10&ndash;12 personalised outreach emails per month</td><td>10&ndash;12+ personalised emails sendable per day</td></tr>
-          <tr><th scope="row">Team focus</th><td>Employee consumed by research, not relationships</td><td>Employee focused on building relationships</td></tr>
-        </tbody>
-      </table>
-      <p class="case-text">A multi-agent AI system: automated prospect discovery, enrichment, qualification scoring, personalised email drafting, CRM integration, and a self-improving search loop. Designed, built, and delivered in under two weeks, with human review kept in the loop where judgement matters.</p>
-      <p class="note">European e-commerce sector. Client details confidential.</p>
-    </div>
-  </section>
-
-  <section id="resources" class="block block-white">
+  <section id="resources" class="block">
     <div class="wrap">
       <h2>Start here</h2>
       <p class="intro">Free tools and templates, no email required.</p>
@@ -264,6 +244,39 @@
       topBtn.classList.toggle('visible', window.scrollY > 600);
     });
     topBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+
+    // ── Compass: swings in on load, then follows the pointer ──
+    (function () {
+      var needle = document.getElementById('needle');
+      var rose = document.querySelector('svg.rose');
+      if (!needle || !rose) return;
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var angle = still ? 0 : -62, vel = 0, target = 0, last = null, running = false;
+      function draw() { needle.setAttribute('transform', 'rotate(' + angle.toFixed(2) + ')'); }
+      function diff(t, a) { var d = (t - a) % 360; if (d > 180) d -= 360; if (d < -180) d += 360; return d; }
+      function tick(now) {
+        if (last === null) last = now;
+        var dt = Math.min((now - last) / 1000, 0.05); last = now;
+        var d = diff(target, angle);
+        vel += (70 * d - 8 * vel) * dt;
+        angle += vel * dt;
+        draw();
+        if (Math.abs(d) < 0.05 && Math.abs(vel) < 0.05) { angle = target; draw(); running = false; last = null; return; }
+        requestAnimationFrame(tick);
+      }
+      function go() { if (!running) { running = true; requestAnimationFrame(tick); } }
+      draw();
+      if (still) return;
+      go();
+      window.addEventListener('pointermove', function (e) {
+        var r = rose.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        if (Math.abs(dx) + Math.abs(dy) < 4) return;
+        target = Math.atan2(dx, -dy) * 180 / Math.PI;
+        go();
+      }, { passive: true });
+    })();
 
     // ── Click-to-load YouTube (privacy-friendly facade) ──
     var facade = document.getElementById('video-facade');
