@@ -184,6 +184,12 @@ html.js .acc-item:not(.open) .acc-inner { visibility: hidden; transition: visibi
 .cookie-btn-accept { background: var(--amber); color: var(--ink); }
 .cookie-btn-reject { background: transparent; color: var(--paper); border: 1.5px solid rgba(255,255,255,.5); }
 
+/* IMAGE BANDS */
+.band { margin: 0; line-height: 0; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.band img { display: block; width: 100%; height: clamp(110px, 17vw, 240px); object-fit: cover; object-position: center 60%; }
+.about-wide { margin: 2.2rem 0 0; }
+.about-wide img { display: block; width: 100%; height: clamp(200px, 34vw, 400px); object-fit: cover; object-position: center 62%; border-radius: var(--r); border: 1px solid var(--rule); }
+
 /* BACK TO TOP */
 #back-to-top { position: fixed; bottom: 22px; right: 22px; z-index: 900; background: var(--navy); color: var(--paper); border: 0; border-radius: var(--r); width: 44px; height: 44px; font-size: 1.1rem; font-weight: 800; cursor: pointer; display: none; }
 #back-to-top.visible { display: block; }
