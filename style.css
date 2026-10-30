@@ -185,8 +185,8 @@ html.js .acc-item:not(.open) .acc-inner { visibility: hidden; transition: visibi
 .cookie-btn-reject { background: transparent; color: var(--paper); border: 1.5px solid rgba(255,255,255,.5); }
 
 /* IMAGE BANDS */
-.band { margin: 0; line-height: 0; border-bottom: 1px solid var(--rule); background: var(--paper); }
-.band img { display: block; width: 100%; height: clamp(110px, 17vw, 240px); object-fit: cover; object-position: center 60%; }
+.band { margin: 0; padding: 2.5rem 0 0; }
+.band img { display: block; width: 100%; height: clamp(110px, 18vw, 210px); object-fit: cover; object-position: center 58%; border-radius: var(--r); border: 1px solid var(--rule); }
 .about-wide { margin: 2.2rem 0 0; }
 .about-wide img { display: block; width: 100%; height: clamp(200px, 34vw, 400px); object-fit: cover; object-position: center 62%; border-radius: var(--r); border: 1px solid var(--rule); }
 
